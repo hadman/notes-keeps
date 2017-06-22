@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= blocks.title%></title>
+    <link rel="stylesheet" href="/vendor/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400|Roboto:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+
+    <script src="/vendor/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/vendor/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+</head>
+<body>
+<header>
+    <%-blocks.header%>
+</header>
+<div class="container">
+    <%-partial('../partials/topNavigation')%>
+    <h1 style="padding-bottom: 10px; "><%=blocks.title%></h1>
+    <%-body%>
+</div>
+<footer>
+    <%-blocks.footer%>
+</footer>
+</body>
+
+
+<script>
+    $('.grid').masonry({
+
+        itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
+        columnWidth: '.grid-sizer',
+        percentPosition: true
+    });
+</script>
+</html>

@@ -1,0 +1,13 @@
+<nav class="navbar navbar-default" role="navigation">
+    <ul class="nav navbar-nav">
+        <% if (user) {%>
+        <li><a href="/keeps">Мои заметки</a></li>
+        <li><a href="/newkeep">Добавить</a></li>
+        <%}%>
+        <% if (user) {%>
+        <li><a href="" onclick="$('body').append('<form id=\'submitme\' method=\'POST\' action=\'/logout\'></form>');$('#submitme').submit();return false;">Выйти</a></li>
+        <% }else {%>
+        <li><a href="/login">Войти</a></li>
+        <% }%>
+    </ul>
+</nav>

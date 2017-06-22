@@ -1,0 +1,48 @@
+*{
+    font-family: 'Roboto', sans-serif;
+    font-weight:lighter;
+    letter-spacing: 1.2px;
+}
+h1{
+    font-family: 'PT Sans', sans-serif;
+    color: rgba(9,11,9,0.67);
+}
+
+.one-keep-wrap{
+    /*border: solid 1px red;*/
+    margin-bottom: 10px;
+}
+.one-keep{
+    /*background-color: #00b3ee;*/
+    background-color: #fff;
+    /*margin-top: 25px;*/
+    border-radius: 2px;
+    font-size: 1.2em;
+    padding: 10px 10px 40px 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight:lighter;
+    letter-spacing: 1.2px;
+    position: relative;
+
+    -webkit-box-shadow: -1px 10px 29px -10px rgba(107,103,107,1);
+    -moz-box-shadow: -1px 10px 29px -10px rgba(107,103,107,1);
+    box-shadow: -1px 10px 29px -10px rgba(107,103,107,1);
+}
+.cross-icon{
+    cursor: pointer;
+    display: none;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    background: url("../images/Antu_application-exit.svg.png") no-repeat;
+    background-size: 100%;
+}
+.one-keep:hover > .cross-icon{
+    display: block;
+}
+
+
+/*.grid-item { width: 200px; }*/
+/*.grid-item--width2 { width: 400px; }*/

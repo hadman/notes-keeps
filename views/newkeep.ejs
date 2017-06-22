@@ -1,0 +1,47 @@
+<% layout('layout/page') -%>
+<% block('title', "Добавить напоминание") -%>
+
+
+<form class="form-horizontal login-form"  name="login-form">
+    <div class="form-group col-lg-12">
+        <div class="col-lg-5">
+            <textarea class="form-control" name="keepfield" id="exampleTextarea" rows="7" placeholder="Стоит только начать!" required></textarea>
+        </div>
+    </div>
+    <div class="form-group col-lg-12">
+        <div class="col-lg-5">
+            <button type="submit" class="btn btn-primary" data-loading-text="Отправляю...">Сохрнить</button>
+            <span class="help-block error"></span>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(document.forms['login-form']).on('submit', function() {
+        var form = $(this);
+        console.log(form);
+        $('.error', form).html('');
+        $(":submit", form).button("loading");
+        $.ajax({
+            url: "/newkeep",
+            data: form.serialize(),
+            method: "POST",
+            complete: function() {
+                console.log("success");
+                $(":submit", form).button("reset");
+            },
+            statusCode: {
+                200: function() {
+                    form.html("Успешно добавлено").addClass('alert-success');
+                    window.location.href = "/keeps";
+                },
+                403: function(jqXHR) {
+                    var error = JSON.parse(jqXHR.responseText);
+                    $('.error', form).html(error.message);
+                }
+            }
+        });
+
+        return false;
+    });
+</script>

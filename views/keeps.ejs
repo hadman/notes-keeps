@@ -1,0 +1,43 @@
+<% layout('layout/page') -%>
+<% block('title', "Зачем откладывать на завтра") -%>
+
+<style>
+    body{
+        background-color: rgba(141,147,141,0.19);
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="grid" >
+        <div class="grid-sizer col-lg-3 col-md-4 col-xs-6"></div>
+        <% for (var i = 0 ; i < keepObj.length; i++) {%>
+        <div class="grid-item col-lg-3 col-md-4 col-xs-6 one-keep-wrap">
+            <div class="grid-item-content one-keep" >
+                <div class="cross-icon" id="<%= keepObj[i]['id']%>" onclick="deletekeep(this);"></div>
+                <p><%= keepObj[i]['text']%>
+                </p>
+            </div>
+        </div>
+        <% }%>
+    </div>
+</div>
+
+<script>
+
+    function deletekeep(keep) {
+        var ifkeep = $(keep).attr('id');
+        $.ajax({
+            url: "/delkeep",
+            data: ifkeep,
+            method: "POST",
+            complete: function() {
+                $(keep).parent().parent().hide( "fast", function() {
+                    console.log("successfull delete");
+                    console.log($('.grid'));
+                    $('.grid').masonry();
+                });
+            }
+        })
+    }
+
+</script>
