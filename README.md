@@ -6,5 +6,4 @@ Cascading grid layout library: [Masonry](https://github.com/desandro/masonry)
 Install dependencies:
 ```shell
 npm install
-bower install
 npm start
